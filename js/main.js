@@ -4,6 +4,22 @@
 
 'use strict';
 
+/* ---------- Image Placeholder Fallback ---------- */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', function () {
+      const w = this.naturalWidth || this.width || 600;
+      const h = this.naturalHeight || this.height || 400;
+      this.src = `https://placehold.co/${w}x${h}/800020/C9A84C?text=Photo+Coming+Soon`;
+      this.onerror = null;
+    });
+    // Trigger for already-broken images
+    if (img.complete && !img.naturalWidth) {
+      img.dispatchEvent(new Event('error'));
+    }
+  });
+});
+
 /* ---------- Loading Screen ---------- */
 window.addEventListener('load', () => {
   const loader = document.getElementById('loading-screen');

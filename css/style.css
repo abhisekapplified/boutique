@@ -362,6 +362,7 @@ img { max-width: 100%; height: auto; }
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: var(--maroon-dark);
   transform: scale(1.05);
   transition: transform 8s ease;
 }
@@ -1627,4 +1628,21 @@ img { max-width: 100%; height: auto; }
   .hero-title-hindi { font-size: 1.8rem; }
   .hero-stats { flex-direction: column; gap: 16px; }
   .gallery-grid { gap: 10px; }
+}
+
+/* ---------- Missing Image Placeholder ---------- */
+img:not([src]),
+img[src=""],
+img.img-error {
+  background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+  border: 2px dashed rgba(201,168,76,0.4);
+  border-radius: var(--radius);
+}
+
+.service-card-img img,
+.gallery-item img,
+.about-main-img,
+.about-accent-img,
+.hero-image-frame img {
+  background: linear-gradient(135deg, var(--cream-dark) 0%, #ede0c8 100%);
 }
